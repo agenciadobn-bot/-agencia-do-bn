@@ -90,8 +90,8 @@ const email=document.getElementById("email").value;
 const senha=document.getElementById("senha").value;
 
 try{
-await createUserWithEmailAndPassword(auth,email,senha);
-alert("Cadastro realizado!");
+await createUserWithEmailAndPassword(auth,email,senha); window.location.href="painel.html";
+alert;
 }
 catch(e){
 alert(e.message);
@@ -105,9 +105,9 @@ const senha=document.getElementById("senha").value;
 
 try{
 await signInWithEmailAndPassword(auth,email,senha);
-alert("Login realizado!");
+alert;
 }
-catch(e){
+window.location.href="painel.html"; catch(e){
 alert(e.message);
 }
 };
