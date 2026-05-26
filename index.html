@@ -2,32 +2,41 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Agência do BN 💜</title>
 
 <style>
 body{
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:#0a0014;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
 color:white;
-padding:20px;
-text-align:center;
 }
 
 .card{
 background:#170022;
-padding:20px;
+padding:25px;
 border-radius:15px;
+width:85%;
 max-width:350px;
-margin:auto;
+text-align:center;
+}
+
+h1{
+margin-bottom:25px;
 }
 
 input{
 width:90%;
-padding:10px;
+padding:12px;
 margin:8px;
-border-radius:8px;
 border:none;
+border-radius:8px;
+font-size:16px;
 }
 
 button{
@@ -39,6 +48,11 @@ border-radius:8px;
 background:#8a2be2;
 color:white;
 font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:0.9;
 }
 </style>
 </head>
@@ -46,11 +60,20 @@ font-size:16px;
 <body>
 
 <div class="card">
+
 <h1>Agência do BN 💜</h1>
 
-<input id="email" type="email" placeholder="Digite seu email">
+<input
+id="email"
+type="email"
+placeholder="Digite seu email"
+>
 
-<input id="senha" type="password" placeholder="Digite sua senha">
+<input
+id="senha"
+type="password"
+placeholder="Digite sua senha"
+>
 
 <button onclick="fazerCadastro()">
 Cadastrar
@@ -64,52 +87,74 @@ Entrar
 
 <script type="module">
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
 getAuth,
 createUserWithEmailAndPassword,
 signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-apiKey: "AIzaSyBF0hscR76logM5SkOjYDNtvAn3R4pQWAY",
-authDomain: "agencia-do-bn-17ffc.firebaseapp.com",
+apiKey: "apiKey: "apiKey: "AIzaSyBF0hscR761ogM5SkOjYDN...",
+  authDomain: "agencia-do-bn-17ffc.firebaseapp.com",
 projectId: "agencia-do-bn-17ffc",
-storageBucket: "agencia-do-bn-17ffc.firebasestorage.app",
+storageBucket: "agencia-do-bn-17ffc.appspot.com",
 messagingSenderId: "1077634284111",
-appId: "1:1077634284111:web:812c7dd2872cadc74d083a"
+appId: "appId: "1:1077634284111:web:812c7dd287..."
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-window.fazerCadastro=async()=>{
+window.fazerCadastro = async ()=>{
 
 const email=document.getElementById("email").value;
 const senha=document.getElementById("senha").value;
 
 try{
-await createUserWithEmailAndPassword(auth,email,senha); window.location.href="painel.html";
-alert;
-}
-catch(e){
+
+await createUserWithEmailAndPassword(
+auth,
+email,
+senha
+);
+
+alert("Cadastro realizado!");
+
+}catch(e){
+
 alert(e.message);
+
 }
+
 };
 
-window.fazerLogin=async()=>{
+window.fazerLogin = async ()=>{
 
 const email=document.getElementById("email").value;
 const senha=document.getElementById("senha").value;
 
 try{
-await signInWithEmailAndPassword(auth,email,senha);
-alert;
-}
-window.location.href="painel.html"; catch(e){
+
+await signInWithEmailAndPassword(
+auth,
+email,
+senha
+);
+
+alert("Login realizado!");
+
+window.location.href="painel.html";
+
+}catch(e){
+
 alert(e.message);
+
 }
+
 };
 
 </script>
