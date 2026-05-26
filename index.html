@@ -1,39 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agência do BN 💜</title>
+
+<style>
+body{
+font-family:Arial;
+background:#0a0014;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.card{
+background:#170022;
+padding:20px;
+border-radius:15px;
+max-width:350px;
+margin:auto;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:8px;
+border-radius:8px;
+border:none;
+}
+
+button{
+width:95%;
+padding:12px;
+margin:8px;
+border:none;
+border-radius:8px;
+background:#8a2be2;
+color:white;
+font-size:16px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h1>Agência do BN 💜</h1>
+
+<input id="email" type="email" placeholder="Digite seu email">
+
+<input id="senha" type="password" placeholder="Digite sua senha">
+
+<button onclick="fazerCadastro()">
+Cadastrar
+</button>
+
+<button onclick="fazerLogin()">
+Entrar
+</button>
+
+</div>
 
 <script type="module">
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
 import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+getAuth,
+createUserWithEmailAndPassword,
+signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBF0hscR76logM5SkOjYDNtvAn3R4pQWAY",
-  authDomain: "agencia-do-bn-17ffc.firebaseapp.com",
-  projectId: "agencia-do-bn-17ffc",
-  storageBucket: "agencia-do-bn-17ffc.firebasestorage.app",
-  messagingSenderId: "1077634284111",
-  appId: "1:1077634284111:web:812c7dd2872cadc74d083a"
+apiKey: "AIzaSyBF0hscR76logM5SkOjYDNtvAn3R4pQWAY",
+authDomain: "agencia-do-bn-17ffc.firebaseapp.com",
+projectId: "agencia-do-bn-17ffc",
+storageBucket: "agencia-do-bn-17ffc.firebasestorage.app",
+messagingSenderId: "1077634284111",
+appId: "1:1077634284111:web:812c7dd2872cadc74d083a"
 };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-window.cadastrar = async function(email, senha){
-  try{
-    await createUserWithEmailAndPassword(auth, email, senha);
-    alert("Cadastro realizado!");
-  }catch(e){
-    alert(e.message);
-  }
-}
+window.fazerCadastro=async()=>{
 
-window.login = async function(email, senha){
-  try{
-    await signInWithEmailAndPassword(auth, email, senha);
-    alert("Login realizado!");
-  }catch(e){
-    alert(e.message);
-  }
+const email=document.getElementById("email").value;
+const senha=document.getElementById("senha").value;
+
+try{
+await createUserWithEmailAndPassword(auth,email,senha);
+alert("Cadastro realizado!");
 }
+catch(e){
+alert(e.message);
+}
+};
+
+window.fazerLogin=async()=>{
+
+const email=document.getElementById("email").value;
+const senha=document.getElementById("senha").value;
+
+try{
+await signInWithEmailAndPassword(auth,email,senha);
+alert("Login realizado!");
+}
+catch(e){
+alert(e.message);
+}
+};
+
 </script>
+
+</body>
+</html>
